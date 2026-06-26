@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  /* show the Shabbat gate instantly in demo mode, before content paints */
+  (function(){try{if(new URLSearchParams(location.search).get('shabbat-demo')==='1')document.documentElement.classList.add('sh-demo');}catch(e){}})();
+</script>
 <title>קו האופק — מדריך פעילויות לקאמפים, מוסדות חינוך וצוותי הוראה</title>
 <meta name="description" content="ארגון קו האופק בפיקוחו של הרב יוסף חגי — מכלול תוכניות והפעלות לקאמפים, מוסדות חינוך וצוותי הוראה. למעלה מ-20 שנות פעילות.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -318,6 +322,35 @@ section{position:relative}
   .prog-grid,.cat-grid{grid-template-columns:1fr}
   .act-grid{grid-template-columns:1fr 1fr}
 }
+
+/* ---------- Shabbat gate ---------- */
+.sh-gate{
+  position:fixed;inset:0;z-index:9999;display:none;
+  align-items:center;justify-content:center;padding:30px;overflow-y:auto;
+  background:radial-gradient(circle at 50% 28%,#21548a,#0b1d2e 72%);
+  color:#fff;text-align:center;
+}
+.sh-gate.show{display:flex}
+html.sh-demo .sh-gate{display:flex}
+html.sh-active,html.sh-demo{overflow:hidden}
+.sh-card{max-width:640px;width:100%;animation:shIn .6s ease both}
+@keyframes shIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.sh-icon{font-size:66px;line-height:1;margin-bottom:6px;filter:drop-shadow(0 0 26px rgba(255,196,90,.55));animation:flick 2.4s ease-in-out infinite}
+@keyframes flick{0%,100%{transform:rotate(-2deg) scale(1)}50%{transform:rotate(2deg) scale(1.05)}}
+.sh-hello{font-size:clamp(28px,6vw,42px);font-weight:900;color:#ffd45e;margin:8px 0 20px}
+.sh-card p{font-size:clamp(15px,2.6vw,18px);color:#dde9f2;line-height:1.9;margin:0 auto 16px;max-width:560px}
+.sh-reason{display:inline-block;margin:14px auto 4px;background:rgba(255,255,255,.08);
+  border:1px solid rgba(127,220,234,.28);padding:8px 22px;border-radius:50px;font-size:15px;color:#cdddea}
+.sh-reason b{color:#7fdcea}
+.sh-until{margin-top:26px;font-weight:700;color:#fff;font-size:17px}
+.sh-timer{display:flex;gap:12px;justify-content:center;margin-top:16px;direction:ltr}
+.t-box{background:rgba(255,255,255,.07);border:1px solid rgba(127,220,234,.22);
+  border-radius:14px;padding:14px 8px;min-width:78px}
+.t-box b{display:block;font-size:36px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.t-box span{font-size:12px;color:#9fc4d6;margin-top:7px;display:block}
+.sh-brand{margin-top:32px;color:#7fdcea;font-weight:700;letter-spacing:1px;font-size:14px}
+.sh-foot{margin-top:6px;color:#6f8aa0;font-size:12px}
+@media(max-width:480px){.t-box{min-width:62px;padding:12px 5px}.t-box b{font-size:27px}.sh-timer{gap:8px}}
 </style>
 </head>
 <body>
@@ -614,6 +647,26 @@ section{position:relative}
   </div>
 </footer>
 
+<!-- SHABBAT GATE -->
+<div class="sh-gate" id="shabbatGate" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="sh-card">
+    <div class="sh-icon">🕯️</div>
+    <h1 class="sh-hello">שלום יקר,</h1>
+    <p>האתר בו הנך מבקר שומר שבת וחג, ולכן הגלישה בו אינה מתאפשרת בזמן זה.</p>
+    <p>האתר ישוב לפעילות רגילה בצאת השבת או החג. באפשרותך להשאיר דף זה פתוח, ובצאת השבת או החג תוחזר אוטומטית אל האתר בו גלשת.</p>
+    <div class="sh-reason">סיבת הסגירה: <b id="shReason">שבת</b></div>
+    <div class="sh-until">האתר ישוב לפעילות בעוד:</div>
+    <div class="sh-timer" id="shTimer">
+      <div class="t-box" id="boxD"><b id="tD">0</b><span>ימים</span></div>
+      <div class="t-box"><b id="tH">00</b><span>שעות</span></div>
+      <div class="t-box"><b id="tM">00</b><span>דקות</span></div>
+      <div class="t-box"><b id="tS">00</b><span>שניות</span></div>
+    </div>
+    <div class="sh-brand">קו האופק • שומר שבת וחג</div>
+    <div class="sh-foot">זמני השבת מחושבים לפי מיקומך • באדיבות Hebcal</div>
+  </div>
+</div>
+
 <!-- LIGHTBOX -->
 <div class="lb" id="lb">
   <button class="x" id="lbClose" aria-label="סגור">×</button>
@@ -657,6 +710,83 @@ document.getElementById('lbNext').onclick=()=>nav(1);
 document.getElementById('lbPrev').onclick=()=>nav(-1);
 lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
 addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')nav(1);if(e.key==='ArrowRight')nav(-1)});
+
+/* ===================== SHABBAT GATE ===================== */
+(function(){
+  const GATE=document.getElementById('shabbatGate');
+  const DEMO=new URLSearchParams(location.search).get('shabbat-demo')==='1';
+  const BUFFER=60*60*1000;                       // 1 hour before start / after end
+  const FALLBACK={lat:31.7683,lng:35.2137};      // ירושלים (ברירת מחדל אם אין מיקום)
+  const TZ=(Intl.DateTimeFormat().resolvedOptions().timeZone)||'Asia/Jerusalem';
+  let timer=null;
+  const pad=n=>(n<10?'0':'')+n;
+  const set=(id,v)=>{document.getElementById(id).textContent=v;};
+
+  function showGate(targetEnd,reason){
+    set('shReason',reason);
+    document.documentElement.classList.add('sh-active');
+    GATE.classList.add('show');
+    GATE.setAttribute('aria-hidden','false');
+    if(timer) clearInterval(timer);
+    function tick(){
+      let diff=targetEnd-Date.now();
+      if(diff<=0){ clearInterval(timer); if(!DEMO){location.reload();return;} diff=0; }
+      let s=Math.floor(diff/1000);
+      const d=Math.floor(s/86400); s-=d*86400;
+      const h=Math.floor(s/3600);  s-=h*3600;
+      const m=Math.floor(s/60);    s-=m*60;
+      document.getElementById('boxD').style.display = d>0 ? '' : 'none';
+      set('tD',d); set('tH',pad(h)); set('tM',pad(m)); set('tS',pad(s));
+    }
+    tick();
+    timer=setInterval(tick,1000);
+  }
+
+  // Build candle->havdalah windows and pick the active or next upcoming one
+  function pickWindow(items){
+    const candles=[],hav=[];
+    (items||[]).forEach(it=>{
+      if(it.category==='candles') candles.push({t:+new Date(it.date),holiday:/yom tov|chag|holiday|חג/i.test((it.title||'')+(it.memo||''))});
+      else if(it.category==='havdalah') hav.push(+new Date(it.date));
+    });
+    hav.sort((a,b)=>a-b); candles.sort((a,b)=>a.t-b.t);
+    const now=Date.now();
+    const wins=candles.map(c=>{const h=hav.find(x=>x>c.t);return h?{start:c.t,end:h,holiday:c.holiday}:null;}).filter(Boolean);
+    const active=wins.find(w=>now>=w.start-BUFFER && now<=w.end+BUFFER);
+    if(active) return active;
+    return wins.filter(w=>w.end+BUFFER>now).sort((a,b)=>a.start-b.start)[0]||null;
+  }
+
+  function fetchWindow(lat,lng){
+    const url=`https://www.hebcal.com/shabbat?cfg=json&latitude=${lat}&longitude=${lng}&tzid=${encodeURIComponent(TZ)}&b=18&m=50`;
+    return fetch(url).then(r=>r.json()).then(j=>pickWindow(j.items));
+  }
+
+  function evaluate(w){
+    const now=Date.now();
+    if(w){
+      const start=w.start-BUFFER, end=w.end+BUFFER;
+      if(now>=start && now<=end){ showGate(end, w.holiday?'חג':'שבת'); return; }
+      if(DEMO){ showGate(end,'הדגמה'); return; }
+    } else if(DEMO){
+      showGate(now+25*3600*1000,'הדגמה');
+    }
+    // otherwise: not Shabbat and not demo -> site stays visible
+  }
+
+  if(DEMO){
+    // preview: render instantly (CSS already shows it), fill timer from upcoming times
+    fetchWindow(FALLBACK.lat,FALLBACK.lng).then(evaluate).catch(()=>evaluate(null));
+  } else if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(
+      p=>fetchWindow(p.coords.latitude,p.coords.longitude).then(evaluate).catch(()=>{}),
+      ()=>fetchWindow(FALLBACK.lat,FALLBACK.lng).then(evaluate).catch(()=>{}),
+      {timeout:8000,maximumAge:3600000}
+    );
+  } else {
+    fetchWindow(FALLBACK.lat,FALLBACK.lng).then(evaluate).catch(()=>{});
+  }
+})();
 </script>
 </body>
 </html>
