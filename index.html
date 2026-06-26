@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>קו האופק — מדריך פעילויות לקאמפים, מוסדות חינוך וצוותי הוראה</title>
+<meta name="description" content="ארגון קו האופק בפיקוחו של הרב יוסף חגי — מכלול תוכניות והפעלות לקאמפים, מוסדות חינוך וצוותי הוראה. למעלה מ-20 שנות פעילות.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#15324f;
+  --navy-2:#1d4368;
+  --navy-3:#27567f;
+  --teal:#1f9bae;
+  --teal-dark:#177e8e;
+  --red:#e8202a;
+  --ink:#1b2733;
+  --muted:#5f7184;
+  --paper:#eef2f5;
+  --paper-2:#e3e9ee;
+  --white:#ffffff;
+  --shadow:0 18px 45px -22px rgba(13,40,66,.55);
+  --shadow-sm:0 8px 22px -14px rgba(13,40,66,.5);
+  --maxw:1180px;
+  --radius:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Heebo',-apple-system,'Segoe UI',Arial,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+section{position:relative}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+/* ---------- Header ---------- */
+.header{
+  position:fixed;inset:0 0 auto 0;z-index:60;
+  transition:.3s ease;
+  background:transparent;
+}
+.header.scrolled{
+  background:rgba(15,34,52,.92);
+  backdrop-filter:blur(10px);
+  box-shadow:0 6px 24px -12px rgba(0,0,0,.55);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px;transition:.3s}
+.header.scrolled .nav{height:64px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:900}
+.brand .mark{
+  width:42px;height:42px;border-radius:12px;flex:0 0 auto;
+  background:linear-gradient(135deg,var(--teal),var(--navy-3));
+  display:grid;place-items:center;color:#fff;font-size:20px;font-weight:900;
+  box-shadow:0 6px 16px -6px rgba(31,155,174,.8);
+}
+.brand .b-txt{display:flex;flex-direction:column;line-height:1.05}
+.brand .b-txt b{font-size:22px;letter-spacing:.5px}
+.brand .b-txt span{font-size:11px;font-weight:400;opacity:.8;letter-spacing:2px}
+.menu{display:flex;align-items:center;gap:6px;list-style:none}
+.menu a{
+  color:#eaf1f6;font-weight:500;font-size:15.5px;padding:9px 14px;border-radius:10px;
+  transition:.2s;position:relative;
+}
+.menu a:hover{background:rgba(255,255,255,.12)}
+.cta-phone{
+  background:linear-gradient(135deg,var(--teal),var(--teal-dark));
+  color:#fff!important;font-weight:700!important;
+  box-shadow:0 8px 20px -8px rgba(31,155,174,.9);
+}
+.cta-phone:hover{filter:brightness(1.08)}
+.burger{display:none;background:none;border:0;cursor:pointer;width:44px;height:44px}
+.burger span{display:block;height:3px;width:26px;margin:5px auto;background:#fff;border-radius:3px;transition:.3s}
+
+/* ---------- Hero ---------- */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  color:#fff;text-align:center;
+  background:
+    linear-gradient(180deg,rgba(15,34,52,.78),rgba(15,34,52,.6) 40%,rgba(21,50,79,.95)),
+    url('assets/img/hero.jpg') center/cover no-repeat;
+  background-attachment:scroll;
+}
+.hero .wrap{padding-top:120px;padding-bottom:80px;width:100%}
+.eyebrow{
+  display:inline-block;letter-spacing:5px;font-size:13px;font-weight:700;
+  color:#8fe2ee;border:1px solid rgba(143,226,238,.4);
+  padding:7px 18px;border-radius:50px;margin-bottom:26px;
+  background:rgba(31,155,174,.12);
+}
+.hero h1{
+  font-size:clamp(48px,9vw,108px);font-weight:900;line-height:.95;
+  letter-spacing:-1px;text-shadow:0 10px 40px rgba(0,0,0,.45);
+}
+.hero h1 .sub{display:block;font-size:clamp(20px,3.6vw,34px);font-weight:700;color:#bfe9f0;margin-top:18px;letter-spacing:0}
+.hero p.lead{
+  max-width:680px;margin:24px auto 0;font-size:clamp(17px,2.3vw,21px);
+  font-weight:300;color:#dbe6ee;
+}
+.hero .years{
+  display:inline-flex;align-items:center;gap:10px;margin-top:18px;
+  font-weight:700;color:#fff;font-size:15px;
+}
+.hero .years b{color:#ffd45e;font-size:22px}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:15px 30px;border-radius:50px;font-weight:700;font-size:16px;
+  transition:.25s;cursor:pointer;border:0;
+}
+.btn-primary{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;box-shadow:0 14px 30px -12px rgba(31,155,174,.9)}
+.btn-primary:hover{transform:translateY(-3px)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.btn-ghost:hover{background:rgba(255,255,255,.2)}
+.scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:#fff;opacity:.7;font-size:26px;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+
+/* ---------- Stats ---------- */
+.stats{
+  background:linear-gradient(135deg,var(--navy),var(--navy-2));
+  color:#fff;
+}
+.stats .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:46px 0}
+.stat{text-align:center;padding:8px}
+.stat b{display:block;font-size:clamp(34px,5vw,52px);font-weight:900;color:#7fdcea;line-height:1}
+.stat span{font-size:15px;color:#cddae6;font-weight:500}
+
+/* ---------- Section headings ---------- */
+.section{padding:90px 0}
+.section.alt{background:var(--white)}
+.shead{text-align:center;max-width:720px;margin:0 auto 54px}
+.shead .kicker{
+  color:var(--teal-dark);font-weight:800;letter-spacing:3px;font-size:14px;
+  display:inline-block;margin-bottom:12px;
+}
+.shead h2{font-size:clamp(30px,5vw,46px);font-weight:900;color:var(--navy);line-height:1.1}
+.shead .rule{width:70px;height:5px;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--navy-3));margin:18px auto 0}
+.shead p{color:var(--muted);font-size:17px;margin-top:18px}
+
+/* ---------- About ---------- */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.about-txt h2{font-size:clamp(28px,4vw,40px);font-weight:900;color:var(--navy);line-height:1.15;margin-bottom:8px}
+.about-txt .lead-line{color:var(--teal-dark);font-weight:800;letter-spacing:3px;font-size:14px;margin-bottom:14px}
+.about-txt p{color:#42566a;font-size:17.5px;margin-bottom:16px}
+.about-txt .sig{display:flex;align-items:center;gap:14px;margin-top:26px;padding-top:22px;border-top:1px solid var(--paper-2)}
+.about-txt .sig .av{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--navy-3),var(--teal));display:grid;place-items:center;color:#fff;font-weight:900;font-size:20px}
+.about-txt .sig b{display:block;color:var(--navy);font-size:17px}
+.about-txt .sig span{color:var(--muted);font-size:14px}
+.about-card{
+  background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:22px;
+  padding:40px 34px;box-shadow:var(--shadow);
+}
+.about-card h3{font-size:22px;font-weight:800;margin-bottom:20px;color:#bfe9f0}
+.about-card ul{list-style:none;display:grid;gap:14px}
+.about-card li{display:flex;align-items:flex-start;gap:12px;font-size:16px;color:#e6eef5}
+.about-card li i{color:#7fdcea;font-style:normal;font-weight:900;margin-top:2px}
+
+/* ---------- Programs ---------- */
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.pcard{
+  background:var(--white);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-sm);transition:.3s;display:flex;flex-direction:column;
+  border:1px solid #e6ecf1;
+}
+.pcard:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.pcard .ph{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--navy)}
+.pcard .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.pcard:hover .ph img{transform:scale(1.07)}
+.pcard .badge{
+  position:absolute;top:12px;right:12px;z-index:2;
+  background:rgba(31,155,174,.95);color:#fff;font-weight:700;font-size:12px;
+  padding:5px 12px;border-radius:50px;
+}
+.pcard .pb{padding:22px 22px 26px;display:flex;flex-direction:column;flex:1}
+.pcard h3{font-size:23px;font-weight:900;color:var(--navy);margin-bottom:8px}
+.pcard p{color:var(--muted);font-size:15px;line-height:1.6;flex:1}
+.pcard .tag{margin-top:14px;color:var(--teal-dark);font-weight:700;font-size:14px;display:flex;align-items:center;gap:6px}
+
+/* ---------- Lecturers ---------- */
+.lect-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.lect{
+  background:var(--white);border-radius:14px;padding:26px 18px;text-align:center;
+  box-shadow:var(--shadow-sm);transition:.3s;border:1px solid #e6ecf1;
+}
+.lect:hover{transform:translateY(-6px);border-color:var(--teal)}
+.lect .circ{
+  width:66px;height:66px;border-radius:50%;margin:0 auto 14px;
+  background:linear-gradient(135deg,var(--navy-2),var(--teal));
+  display:grid;place-items:center;color:#fff;font-weight:900;font-size:24px;
+}
+.lect b{display:block;color:var(--navy);font-size:16.5px;font-weight:800;line-height:1.3}
+.lect span{color:var(--muted);font-size:13px}
+
+/* ---------- Activities ---------- */
+.activities{background:linear-gradient(135deg,var(--navy),#102a42);color:#fff}
+.activities .shead h2{color:#fff}
+.activities .shead .kicker{color:#7fdcea}
+.act-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.act{
+  background:rgba(255,255,255,.06);border:1px solid rgba(127,220,234,.18);
+  border-radius:14px;padding:26px 16px;text-align:center;transition:.3s;
+}
+.act:hover{background:rgba(31,155,174,.18);transform:translateY(-5px);border-color:var(--teal)}
+.act .ico{font-size:34px;margin-bottom:12px}
+.act b{font-size:16px;font-weight:700;color:#eaf3f8}
+
+/* ---------- Extra services band ---------- */
+.svc-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:26px}
+.svc{border-radius:20px;padding:38px;box-shadow:var(--shadow-sm)}
+.svc.edu{background:var(--white);border:1px solid #e6ecf1}
+.svc.proj{background:linear-gradient(135deg,#102a42,var(--navy-2));color:#fff}
+.svc h3{font-size:26px;font-weight:900;color:var(--navy);margin-bottom:6px}
+.svc.proj h3{color:#fff}
+.svc .by{color:var(--teal-dark);font-weight:700;margin-bottom:20px;font-size:15px}
+.svc.proj .by{color:#7fdcea}
+.svc ul{list-style:none;display:grid;gap:14px}
+.svc li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:#42566a}
+.svc.proj li{color:#dbe9f2}
+.svc li i{flex:0 0 auto;width:24px;height:24px;border-radius:7px;background:var(--teal);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:900;font-size:13px;margin-top:3px}
+.svc .note{margin-top:22px;padding-top:18px;border-top:1px solid #e6ecf1;font-weight:700;color:var(--navy)}
+.svc.proj .note{border-color:rgba(255,255,255,.15);color:#fff}
+.svc.proj .big{font-size:40px;font-weight:900;color:#7fdcea;line-height:1.1;margin-bottom:8px}
+
+/* ---------- Clients ---------- */
+.clients{background:var(--white)}
+.chip-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:960px;margin:0 auto}
+.chip{
+  background:var(--paper);border:1px solid var(--paper-2);color:#3c5066;
+  padding:9px 18px;border-radius:50px;font-size:15px;font-weight:500;transition:.2s;
+}
+.chip:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* ---------- Catalog ---------- */
+.catalog{background:var(--paper)}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.cat-item{
+  border-radius:12px;overflow:hidden;cursor:pointer;position:relative;
+  box-shadow:var(--shadow-sm);background:#fff;transition:.3s;border:1px solid #e6ecf1;
+}
+.cat-item:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.cat-item img{width:100%;aspect-ratio:0.706;object-fit:cover}
+.cat-item .ov{
+  position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,34,52,.7),transparent 55%);
+  opacity:0;transition:.3s;display:flex;align-items:flex-end;justify-content:center;padding:14px;
+  color:#fff;font-weight:700;
+}
+.cat-item:hover .ov{opacity:1}
+.cat-item .zoom{position:absolute;top:10px;left:10px;width:34px;height:34px;border-radius:50%;background:rgba(31,155,174,.95);color:#fff;display:grid;place-items:center;opacity:0;transition:.3s}
+.cat-item:hover .zoom{opacity:1}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(8,20,32,.94);z-index:200;display:none;align-items:center;justify-content:center;padding:30px}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:90vh;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb .x{position:absolute;top:20px;left:24px;color:#fff;font-size:34px;cursor:pointer;background:none;border:0;line-height:1}
+.lb .arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);color:#fff;border:0;width:54px;height:54px;border-radius:50%;font-size:26px;cursor:pointer;transition:.2s}
+.lb .arrow:hover{background:rgba(31,155,174,.9)}
+.lb .prev{right:24px}
+.lb .next{left:24px}
+
+/* ---------- Contact / Footer ---------- */
+.contact{
+  background:
+    linear-gradient(135deg,rgba(15,34,52,.96),rgba(16,42,66,.96)),
+    url('assets/img/hero.jpg') center/cover fixed;
+  color:#fff;text-align:center;padding:96px 0;
+}
+.contact h2{font-size:clamp(30px,5vw,46px);font-weight:900;margin-bottom:14px}
+.contact p{color:#cdddea;font-size:18px;max-width:620px;margin:0 auto 36px}
+.contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;margin:0 auto}
+.ccard{background:rgba(255,255,255,.07);border:1px solid rgba(127,220,234,.22);border-radius:16px;padding:30px 18px;transition:.3s}
+.ccard:hover{background:rgba(31,155,174,.16);transform:translateY(-5px)}
+.ccard .ico{font-size:30px;margin-bottom:10px}
+.ccard .lbl{color:#9fc4d6;font-size:14px;font-weight:600}
+.ccard .val{font-size:24px;font-weight:900;color:#fff;direction:ltr;margin-top:4px}
+.ccard .val.he{direction:rtl}
+.footer{background:#0c1f31;color:#9fb3c4;text-align:center;padding:30px 0;font-size:14px}
+.footer .brand{justify-content:center;margin-bottom:10px}
+.footer a{color:#7fdcea}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(34px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media(max-width:920px){
+  .about-grid{grid-template-columns:1fr;gap:34px}
+  .prog-grid{grid-template-columns:repeat(2,1fr)}
+  .lect-grid,.act-grid,.cat-grid{grid-template-columns:repeat(3,1fr)}
+  .svc-grid{grid-template-columns:1fr}
+  .contact-cards{grid-template-columns:1fr}
+  .stats .grid{grid-template-columns:repeat(2,1fr);gap:24px 10px}
+}
+@media(max-width:640px){
+  .menu{
+    position:fixed;inset:0 0 0 30%;background:rgba(13,34,53,.98);backdrop-filter:blur(8px);
+    flex-direction:column;justify-content:center;gap:8px;
+    transform:translateX(-100%);transition:.35s;padding:30px;
+  }
+  .menu.open{transform:translateX(0)}
+  .menu a{font-size:19px;width:100%;text-align:center}
+  .burger{display:block;z-index:70}
+  .header.open .burger span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .header.open .burger span:nth-child(2){opacity:0}
+  .header.open .burger span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  .prog-grid,.lect-grid,.act-grid,.cat-grid{grid-template-columns:repeat(2,1fr)}
+  .section{padding:64px 0}
+  .hero{background-attachment:scroll}
+  .lect-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:430px){
+  .prog-grid,.cat-grid{grid-template-columns:1fr}
+  .act-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="wrap nav">
+    <a href="#hero" class="brand">
+      <span class="mark">ק</span>
+      <span class="b-txt"><b>קו האופק</b><span>תוכניות והפעלות</span></span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#hero">בית</a></li>
+      <li><a href="#about">אודות</a></li>
+      <li><a href="#programs">תוכניות</a></li>
+      <li><a href="#lecturers">מרצים</a></li>
+      <li><a href="#activities">הפעלות</a></li>
+      <li><a href="#catalog">קטלוג</a></li>
+      <li><a href="tel:0533124333" class="cta-phone">📞 053-312-4333</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="תפריט"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="wrap">
+    <span class="eyebrow">בפיקוח הרב יוסף חגי שליט"א</span>
+    <h1>קו האופק<span class="sub">לנהל קאמפ — נכון, מרתק ומחזק</span></h1>
+    <p class="lead">מדריך פעילויות לקאמפים, מוסדות חינוך וצוותי הוראה. מאגד את טובי המרצים ומציע מכלול תוכניות חווייתיות, מעצימות ובלתי נשכחות.</p>
+    <div class="years"><b>+20</b> שנות פעילות וניסיון</div>
+    <div class="hero-btns">
+      <a href="#programs" class="btn btn-primary">לתוכניות שלנו ←</a>
+      <a href="tel:0533124333" class="btn btn-ghost">📞 להזמנות: 053-312-4333</a>
+    </div>
+  </div>
+  <div class="scroll-cue">⌄</div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="grid">
+      <div class="stat reveal"><b>+20</b><span>שנות פעילות</span></div>
+      <div class="stat reveal"><b>9+</b><span>תוכניות דגל</span></div>
+      <div class="stat reveal"><b>8</b><span>מרצים ואמנים</span></div>
+      <div class="stat reveal"><b>אלפי</b><span>משתתפים מרוצים</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section alt" id="about">
+  <div class="wrap about-grid">
+    <div class="about-txt reveal">
+      <div class="lead-line">אודות הארגון</div>
+      <h2>הופכים כל קאמפ לחוויה בלתי נשכחת</h2>
+      <p>ארגון <b>קו האופק</b>, בפיקוחו של הרב יוסף חגי, מאגד את טובי המרצים ומציע מכלול פעילויות לתלמידים ולצוותי הוראה. הארגון פועל למעלה מעשרים שנה, ובזכות הניסיון הרב ניתן למצוא אצלנו את מכלול התוכניות החדשות והמרתקות לשנת תשפ"ו.</p>
+      <p>אנו משלבים תוכן ערכי ומחזק עם חוויה סוחפת — מצגות עוצרות נשימה, סיפורים אישיים, פעילויות גיבוש והעצמה רגשית — הכול בהתאמה מלאה לרוח המוסד ולקהל היעד.</p>
+      <div class="sig">
+        <span class="av">יח</span>
+        <div><b>הרב יוסף חגי שליט"א</b><span>מייסד ומנהל קו האופק • גרפולוג מוסמך</span></div>
+      </div>
+    </div>
+    <div class="about-card reveal">
+      <h3>למה קו האופק?</h3>
+      <ul>
+        <li><i>✓</i> מעל 20 שנות ניסיון בעולם הקאמפים והחינוך</li>
+        <li><i>✓</i> מבחר רחב של תוכניות לכל גיל ולכל מסגרת</li>
+        <li><i>✓</i> מרצים ואמנים מהשורה הראשונה</li>
+        <li><i>✓</i> שילוב של תוכן מחזק עם חוויה סוחפת</li>
+        <li><i>✓</i> התאמה אישית לרוח המוסד ולצוותי ההוראה</li>
+        <li><i>✓</i> ליווי מלא מההזמנה ועד לביצוע</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="section" id="programs">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="kicker">התוכניות שלנו</span>
+      <h2>תוכניות והפעלות לקאמפים</h2>
+      <div class="rule"></div>
+      <p>מבחר תוכניות הדגל של קו האופק — לחצו לצפייה בקטלוג המלא</p>
+    </div>
+    <div class="prog-grid">
+
+      <article class="pcard reveal">
+        <div class="ph"><span class="badge">מצגת</span><img src="assets/img/prog-shaagat.jpg" alt="שאגת הארי"></div>
+        <div class="pb"><h3>שאגת הארי</h3><p>מצגת דרמטית עוצרת נשימה, המרתקת את הקהל מהרגע הראשון ועד האחרון.</p><div class="tag">דרמה עוצרת נשימה</div></div>
+      </article>
+
+      <article class="pcard reveal">
+        <div class="ph"><span class="badge">סיפור אישי</span><img src="assets/img/prog-komer.jpg" alt="הכומר שהתגייר"></div>
+        <div class="pb"><h3>הכומר שהתגייר</h3><p>מסע מרגש ואותנטי בסיפור אישי — מבית המלוכה אל בית המדרש.</p><div class="tag">בסיפור אישי</div></div>
+      </article>
+
+      <article class="pcard reveal">
+        <div class="ph"><span class="badge">מיצג</span><img src="assets/img/prog-pelaot.jpg" alt="פלאות התורה"></div>
+        <div class="pb"><h3>פלאות התורה</h3><p>מיצג אותנטי ומחזק, החושף את עוצמתם ופלאיהם של רזי התורה.</p><div class="tag">אותנטי ומחזק</div></div>
+      </article>
+
+      <article class="pcard reveal">
+        <div class="ph"><span class="badge">תוכנית מרתקת</span><img src="assets/img/prog-toshiya.jpg" alt="תושיה בזמן אמת"></div>
+        <div class="pb"><h3>תושיה בזמן אמת</h3><p>שליטה על הרגש והחשיבה במצבי מצוקה, מלווה בסרטונים עוצרי נשימה — לשבור את מחסום הפחד!</p><div class="tag">התוכנית שתעשה לכם את הקאמפ</div></div>
+      </article>
+
+      <article class="pcard reveal">
+        <div class="ph"><span class="badge">סדנה</span><img src="assets/img/prog-graphology.jpg" alt="יסודות הגרפולוגיה"></div>
+        <div class="pb"><h3>יסודות הגרפולוגיה</h3><p>עם הגרפולוג הרב יוסף חגי — פענוח כתב יד וחתימה, ופענוח שפת גוף בזמן אמת.</p><div class="tag">פענוח כתב יד ושפת גוף</div></div>
+      </article>
+
+      <article class="pcard reveal">
+        <div class="ph"><span class="badge">תחרות כשרונות</span><img src="assets/img/prog-hamartze.jpg" alt="המרצה הבא"></div>
+        <div class="pb"><h3>המרצה הבא</h3><p>תחרות כשרונות סוחפת המעלה על הבמה את הדור הבא של המרצים והנואמים.</p><div class="tag">תחרות כשרונות</div></div>
+      </article>
+
+      <article class="pcard reveal">
+        <div class="ph"><span class="badge">בהנחיה</span><img src="assets/img/prog-comics.jpg" alt="ציורי הקומיקס"></div>
+        <div class="pb"><h3>ציורי הקומיקס</h3><p>בהנחיית הרב מנחם מנדל וקסברגר — סיפור מצויר חי ומרתק, פריצת דרך יצירתית.</p><div class="tag">הרב מנחם מנדל וקסברגר</div></div>
+      </article>
+
+      <article class="pcard reveal">
+        <div class="ph"><span class="badge">גיבוש</span><img src="assets/img/prog-drums.jpg" alt="מעגל תופים"></div>
+        <div class="pb"><h3>מעגל תופים</h3><p>תוכנית מקפיצה ומגבשת — חוויה קצבית שמאחדת את כל המשתתפים למקצב אחד.</p><div class="tag">מקפיצה ומגבשת</div></div>
+      </article>
+
+      <article class="pcard reveal">
+        <div class="ph"><span class="badge">מופע חי</span><img src="assets/img/prog-jungle.jpg" alt="ג'ונגל חי"></div>
+        <div class="pb"><h3>ג'ונגל חי</h3><p>מופע בעלי חיים אקזוטיים חי ומרהיב — תוכים, זוחלים ומפגש בלתי נשכח עם הטבע.</p><div class="tag">מופע בעלי חיים</div></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- LECTURERS -->
+<section class="section alt" id="lecturers">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="kicker">הצוות שלנו</span>
+      <h2>מרצים ואמנים</h2>
+      <div class="rule"></div>
+      <p>טובי המרצים והאמנים, מהשורה הראשונה, תחת קורת גג אחת</p>
+    </div>
+    <div class="lect-grid">
+      <div class="lect reveal"><div class="circ">בק</div><b>הרב בנימין קלוגר</b><span>שליט"א</span></div>
+      <div class="lect reveal"><div class="circ">יח</div><b>הגרפולוג הרב יוסף חגי</b><span>שליט"א</span></div>
+      <div class="lect reveal"><div class="circ">אס</div><b>הסופר הרב אברהם סיטבון</b><span>שליט"א</span></div>
+      <div class="lect reveal"><div class="circ">דש</div><b>הרב דוד שווארץ</b><span>שליט"א</span></div>
+      <div class="lect reveal"><div class="circ">חז</div><b>הרב חיים זאיד</b><span>שליט"א</span></div>
+      <div class="lect reveal"><div class="circ">מו</div><b>הרב מנחם מנדל וקסברגר</b><span>שליט"א</span></div>
+      <div class="lect reveal"><div class="circ">אה</div><b>אומן הקלידים אלי הרשקוביץ</b><span>שליט"א</span></div>
+      <div class="lect reveal"><div class="circ">דנ</div><b>הרב ד"ר דניאל נשיא</b><span>שליט"א</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section class="section activities" id="activities">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="kicker">הפעלות לקאמפים</span>
+      <h2>מגוון הפעלות לכל קאמפ</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="act-grid">
+      <div class="act reveal"><div class="ico">🧠</div><b>חידון סיעור מוחות</b></div>
+      <div class="act reveal"><div class="ico">✒️</div><b>גרפולוגיה</b></div>
+      <div class="act reveal"><div class="ico">🎤</div><b>המרצה הבא</b></div>
+      <div class="act reveal"><div class="ico">✊</div><b>תושיה בזמן אמת</b></div>
+      <div class="act reveal"><div class="ico">📖</div><b>סיפורים אישיים</b></div>
+      <div class="act reveal"><div class="ico">🎙️</div><b>תחרות זמר</b></div>
+      <div class="act reveal"><div class="ico">🔥</div><b>קומיץ</b></div>
+      <div class="act reveal"><div class="ico">🙆</div><b>פענוח שפת גוף</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA SERVICES -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="kicker">למחנכים ולמוסדות</span>
+      <h2>תוכניות והשכרת ציוד</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="svc-grid">
+      <div class="svc edu reveal">
+        <h3>תוכניות למחנכים ולצוותי הוראה</h3>
+        <div class="by">בהנחיית הרב יוסף חגי</div>
+        <ul>
+          <li><i>1</i> <span>העצמה רגשית והפחתת חרדות אצל בני נוער, בשילוב שיטת CBT.</span></li>
+          <li><i>2</i> <span>גרפולוגיה ופענוח ציורי ילדים.</span></li>
+          <li><i>3</i> <span>"מורה מאמן" — קורס אימון חד-פעמי להעצמה לצוותי הוראה.</span></li>
+        </ul>
+        <div class="note">ניתן להאזין לקטע משמיעה לצוותי הוראה: <a href="tel:0722710927" style="color:var(--teal-dark)">072-271-0927</a> שלוחה 4</div>
+      </div>
+      <div class="svc proj reveal">
+        <div class="big">🎥</div>
+        <h3>השכרת מקרנים</h3>
+        <div class="by">פתרון הקרנה מושלם לקאמפ</div>
+        <ul>
+          <li><i>✓</i> <span>השכרה ליום בודד או לקאמפ שלם</span></li>
+          <li><i>✓</i> <span>ציוד מקצועי ואיכותי</span></li>
+          <li><i>✓</i> <span>מתאים לכל גודל אולם ומסגרת</span></li>
+        </ul>
+        <div class="note">לפרטים והזמנה: <a href="tel:0533124333" style="color:#7fdcea">053-312-4333</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="section clients" id="clients">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="kicker">בין לקוחותינו</span>
+      <h2>היכן פעלנו</h2>
+      <div class="rule"></div>
+      <p>תוכניות הגרפולוגיה ו"תושיה בזמן אמת" הועברו במוסדות וקהילות מובילים בכל הארץ</p>
+    </div>
+    <div class="chip-row reveal">
+      <span class="chip">אורחות תורה</span>
+      <span class="chip">קול תורה</span>
+      <span class="chip">פוניבז' אשדוד</span>
+      <span class="chip">רינת התורה</span>
+      <span class="chip">באר יעקב</span>
+      <span class="chip">מתנת חיים</span>
+      <span class="chip">מיר</span>
+      <span class="chip">קרליבך</span>
+      <span class="chip">בעלזא</span>
+      <span class="chip">גור ירושלים</span>
+      <span class="chip">בני ברק</span>
+      <span class="chip">אשדוד</span>
+      <span class="chip">ויז'ניץ</span>
+      <span class="chip">ברסלב</span>
+      <span class="chip">סאטמר</span>
+      <span class="chip">ביאלה</span>
+      <span class="chip">סלובודקה</span>
+      <span class="chip">בית מאיר</span>
+      <span class="chip">אור יהודה</span>
+      <span class="chip">נחלת דן</span>
+      <span class="chip">יסודות</span>
+      <span class="chip">נתיבות עולם</span>
+      <span class="chip">זכרון יעקב</span>
+      <span class="chip">אור ישראל</span>
+      <span class="chip">ועוד רבים</span>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="section catalog" id="catalog">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="kicker">הקטלוג שלנו</span>
+      <h2>עיינו בחוברת המלאה</h2>
+      <div class="rule"></div>
+      <p>לחצו על כל עמוד להגדלה ולצפייה בכל התוכניות וההפעלות</p>
+    </div>
+    <div class="cat-grid" id="catGrid">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>מוכנים להפוך את הקאמפ לחוויה?</h2>
+    <p>צרו קשר עוד היום ונתאים עבורכם את התוכניות וההפעלות המושלמות</p>
+    <div class="contact-cards">
+      <a class="ccard" href="tel:0533124333">
+        <div class="ico">📞</div><div class="lbl">להזמנת תוכניות</div><div class="val">053-312-4333</div>
+      </a>
+      <a class="ccard" href="tel:0722710927">
+        <div class="ico">🎧</div><div class="lbl">להאזנה לצוותי הוראה</div><div class="val">072-271-0927</div>
+      </a>
+      <a class="ccard" href="tel:0533124333">
+        <div class="ico">🌿</div><div class="lbl">בפיקוח</div><div class="val he">הרב יוסף חגי</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <a href="#hero" class="brand"><span class="mark">ק</span><span class="b-txt"><b>קו האופק</b></span></a>
+    <p>מדריך פעילויות לקאמפים, מוסדות חינוך וצוותי הוראה • למעלה מ-20 שנות פעילות</p>
+    <p>© 2026 קו האופק. כל הזכויות שמורות.</p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="x" id="lbClose" aria-label="סגור">×</button>
+  <button class="arrow prev" id="lbPrev" aria-label="הקודם">›</button>
+  <img id="lbImg" src="" alt="עמוד קטלוג">
+  <button class="arrow next" id="lbNext" aria-label="הבא">‹</button>
+</div>
+
+<script>
+// header scroll
+const header=document.getElementById('header');
+addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>40));
+
+// mobile menu
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>{menu.classList.toggle('open');header.classList.toggle('open')});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');header.classList.remove('open')}));
+
+// reveal on scroll
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el)});
+
+// catalog + lightbox
+const pages=8, grid=document.getElementById('catGrid');
+for(let i=1;i<=pages;i++){
+  const d=document.createElement('div');
+  d.className='cat-item reveal';
+  d.innerHTML=`<img src="assets/img/catalog/page-${i}.jpg" alt="עמוד ${i}" loading="lazy">
+    <span class="zoom">🔍</span><div class="ov">עמוד ${i}</div>`;
+  d.addEventListener('click',()=>openLb(i));
+  grid.appendChild(d);
+  io.observe(d);
+}
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+let cur=1;
+function openLb(i){cur=i;lbImg.src=`assets/img/catalog/page-${i}.jpg`;lb.classList.add('open');document.body.style.overflow='hidden'}
+function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
+function nav(d){cur=((cur-1+d+pages)%pages)+1;lbImg.src=`assets/img/catalog/page-${cur}.jpg`}
+document.getElementById('lbClose').onclick=closeLb;
+document.getElementById('lbNext').onclick=()=>nav(1);
+document.getElementById('lbPrev').onclick=()=>nav(-1);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')nav(1);if(e.key==='ArrowRight')nav(-1)});
+</script>
+</body>
+</html>
