@@ -258,6 +258,20 @@ section{position:relative}
 .cat-item .zoom{position:absolute;top:10px;left:10px;width:34px;height:34px;border-radius:50%;background:rgba(31,155,174,.95);color:#fff;display:grid;place-items:center;opacity:0;transition:.3s}
 .cat-item:hover .zoom{opacity:1}
 
+/* posters / ads gallery */
+.poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;align-items:start}
+.poster{
+  border-radius:14px;overflow:hidden;cursor:pointer;position:relative;background:#fff;
+  box-shadow:var(--shadow);border:1px solid #e6ecf1;transition:.3s;
+}
+.poster:hover{transform:translateY(-6px)}
+.poster img{width:100%;display:block;object-fit:cover}
+.poster .cap{padding:14px 16px;font-weight:800;color:var(--navy);text-align:center;font-size:15px;border-top:3px solid var(--teal)}
+.poster .zoom{position:absolute;top:12px;left:12px;width:36px;height:36px;border-radius:50%;background:rgba(31,155,174,.95);color:#fff;display:grid;place-items:center;opacity:0;transition:.3s;font-size:16px}
+.poster:hover .zoom{opacity:1}
+@media(max-width:900px){.poster-grid{grid-template-columns:repeat(2,1fr);gap:18px}}
+@media(max-width:560px){.poster-grid{grid-template-columns:1fr}}
+
 /* lightbox */
 .lb{position:fixed;inset:0;background:rgba(8,20,32,.94);z-index:200;display:none;align-items:center;justify-content:center;padding:30px}
 .lb.open{display:flex}
@@ -368,6 +382,7 @@ html.sh-active,html.sh-demo{overflow:hidden}
       <li><a href="#programs">תוכניות</a></li>
       <li><a href="#lecturers">מרצים</a></li>
       <li><a href="#activities">הפעלות</a></li>
+      <li><a href="#posters">מודעות</a></li>
       <li><a href="#catalog">קטלוג</a></li>
       <li><a href="tel:0533124333" class="cta-phone">📞 053-312-4333</a></li>
     </ul>
@@ -378,8 +393,7 @@ html.sh-active,html.sh-demo{overflow:hidden}
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="wrap">
-    <span class="eyebrow">בפיקוח הרב יוסף חגי שליט"א</span>
-    <h1>קו האופק<span class="sub">לנהל קאמפ — נכון, מרתק ומחזק</span></h1>
+    <h1>מנהל קאמפ<span class="sub">קו האופק</span></h1>
     <p class="lead">מדריך פעילויות לקאמפים, מוסדות חינוך וצוותי הוראה. מאגד את טובי המרצים ומציע מכלול תוכניות חווייתיות, מעצימות ובלתי נשכחות.</p>
     <div class="years"><b>+20</b> שנות פעילות וניסיון</div>
     <div class="hero-btns">
@@ -408,7 +422,7 @@ html.sh-active,html.sh-demo{overflow:hidden}
     <div class="about-txt reveal">
       <div class="lead-line">אודות הארגון</div>
       <h2>הופכים כל קאמפ לחוויה בלתי נשכחת</h2>
-      <p>ארגון <b>קו האופק</b>, בפיקוחו של הרב יוסף חגי, מאגד את טובי המרצים ומציע מכלול פעילויות לתלמידים ולצוותי הוראה. הארגון פועל למעלה מעשרים שנה, ובזכות הניסיון הרב ניתן למצוא אצלנו את מכלול התוכניות החדשות והמרתקות לשנת תשפ"ו.</p>
+      <p>ארגון <b>קו האופק</b> מאגד את טובי המרצים ומציע מכלול פעילויות לתלמידים ולצוותי הוראה. הארגון פועל למעלה מעשרים שנה, ובזכות הניסיון הרב ניתן למצוא אצלנו את מכלול התוכניות החדשות והמרתקות לשנת תשפ"ו.</p>
       <p>אנו משלבים תוכן ערכי ומחזק עם חוויה סוחפת — מצגות עוצרות נשימה, סיפורים אישיים, פעילויות גיבוש והעצמה רגשית — הכול בהתאמה מלאה לרוח המוסד ולקהל היעד.</p>
       <div class="sig">
         <span class="av">יח</span>
@@ -499,14 +513,15 @@ html.sh-active,html.sh-demo{overflow:hidden}
       <p>טובי המרצים והאמנים, מהשורה הראשונה, תחת קורת גג אחת</p>
     </div>
     <div class="lect-grid">
-      <div class="lect reveal"><div class="circ">בק</div><b>הרב בנימין קלוגר</b><span>שליט"א</span></div>
-      <div class="lect reveal"><div class="circ">יח</div><b>הגרפולוג הרב יוסף חגי</b><span>שליט"א</span></div>
-      <div class="lect reveal"><div class="circ">אס</div><b>הסופר הרב אברהם סיטבון</b><span>שליט"א</span></div>
-      <div class="lect reveal"><div class="circ">דש</div><b>הרב דוד שווארץ</b><span>שליט"א</span></div>
-      <div class="lect reveal"><div class="circ">חז</div><b>הרב חיים זאיד</b><span>שליט"א</span></div>
-      <div class="lect reveal"><div class="circ">מו</div><b>הרב מנחם מנדל וקסברגר</b><span>שליט"א</span></div>
-      <div class="lect reveal"><div class="circ">אה</div><b>אומן הקלידים אלי הרשקוביץ</b><span>שליט"א</span></div>
-      <div class="lect reveal"><div class="circ">דנ</div><b>הרב ד"ר דניאל נשיא</b><span>שליט"א</span></div>
+      <div class="lect reveal"><div class="circ">בק</div><b>הרב בנימין קלוגר</b></div>
+      <div class="lect reveal"><div class="circ">יח</div><b>הגרפולוג הרב יוסף חגי</b></div>
+      <div class="lect reveal"><div class="circ">אס</div><b>הסופר הרב אברהם סיטבון</b></div>
+      <div class="lect reveal"><div class="circ">דש</div><b>הרב דוד שווארץ</b></div>
+      <div class="lect reveal"><div class="circ">חז</div><b>הרב חיים זאיד</b></div>
+      <div class="lect reveal"><div class="circ">מו</div><b>הרב מנחם מנדל וקסברגר</b></div>
+      <div class="lect reveal"><div class="circ">אה</div><b>אומן הקלידים אלי הרשקוביץ</b></div>
+      <div class="lect reveal"><div class="circ">דנ</div><b>הרב ד"ר דניאל נשיא</b></div>
+      <div class="lect reveal"><div class="circ">＋</div><b>ועוד…</b></div>
     </div>
   </div>
 </section>
@@ -570,7 +585,7 @@ html.sh-active,html.sh-demo{overflow:hidden}
 <section class="section clients" id="clients">
   <div class="wrap">
     <div class="shead reveal">
-      <span class="kicker">בין לקוחותינו</span>
+      <span class="kicker" style="font-size:24px;letter-spacing:2px">בין לקוחותינו</span>
       <h2>היכן פעלנו</h2>
       <div class="rule"></div>
       <p>תוכניות הגרפולוגיה ו"תושיה בזמן אמת" הועברו במוסדות וקהילות מובילים בכל הארץ</p>
@@ -586,8 +601,8 @@ html.sh-active,html.sh-demo{overflow:hidden}
       <span class="chip">קרליבך</span>
       <span class="chip">בעלזא</span>
       <span class="chip">גור ירושלים</span>
-      <span class="chip">בני ברק</span>
-      <span class="chip">אשדוד</span>
+      <span class="chip">גור בני ברק</span>
+      <span class="chip">גור אשדוד</span>
       <span class="chip">ויז'ניץ</span>
       <span class="chip">ברסלב</span>
       <span class="chip">סאטמר</span>
@@ -600,7 +615,30 @@ html.sh-active,html.sh-demo{overflow:hidden}
       <span class="chip">נתיבות עולם</span>
       <span class="chip">זכרון יעקב</span>
       <span class="chip">אור ישראל</span>
+      <span class="chip">מלון כינר</span>
+      <span class="chip">מלון לביא</span>
+      <span class="chip">מלון ניר עציון</span>
+      <span class="chip">מלון ציפורי בכפר</span>
+      <span class="chip">מלון ציפורי בכנרת</span>
       <span class="chip">ועוד רבים</span>
+    </div>
+  </div>
+</section>
+
+<!-- POSTERS / ADS -->
+<section class="section alt posters" id="posters">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="kicker">מודעות ואירועים</span>
+      <h2>היכן הופענו</h2>
+      <div class="rule"></div>
+      <p>מבחר מודעות מאירועים, ערבי עיון וקורסים שהעברנו במוסדות ובקהילות ברחבי הארץ</p>
+    </div>
+    <div class="poster-grid" id="posterGrid">
+      <figure class="poster reveal"><div class="zoom">⤢</div><img src="assets/img/posters/course.jpg" alt="הקורס להכשרת מרצים — הרשות החרדית"><figcaption class="cap">קורס הכשרת מרצים</figcaption></figure>
+      <figure class="poster reveal"><div class="zoom">⤢</div><img src="assets/img/posters/hanuka.jpg" alt="מסיבת מוצאי חנוכה — גרפולוגיה, שליטה עצמית ושפת גוף"><figcaption class="cap">מסיבת מוצאי חנוכה</figcaption></figure>
+      <figure class="poster reveal"><div class="zoom">⤢</div><img src="assets/img/posters/hamartze.jpg" alt="המרצה הבא — ערב סיום קורס מרצים"><figcaption class="cap">ערב סיום קורס מרצים</figcaption></figure>
+      <figure class="poster reveal"><div class="zoom">⤢</div><img src="assets/img/posters/event.jpg" alt="ערב עם הרב יוסף חגי, הרב חיים זאיד והרב בנימין אור"><figcaption class="cap">ערב מרצים — חולון</figcaption></figure>
     </div>
   </div>
 </section>
@@ -691,20 +729,28 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
 
 // catalog + lightbox
 const pages=8, grid=document.getElementById('catGrid');
+const catalog=[];
 for(let i=1;i<=pages;i++){
+  const src=`assets/img/catalog/page-${i}.jpg`; catalog.push(src);
+  const idx=i-1;
   const d=document.createElement('div');
   d.className='cat-item reveal';
-  d.innerHTML=`<img src="assets/img/catalog/page-${i}.jpg" alt="עמוד ${i}" loading="lazy">
+  d.innerHTML=`<img src="${src}" alt="עמוד ${i}" loading="lazy">
     <span class="zoom">🔍</span><div class="ov">עמוד ${i}</div>`;
-  d.addEventListener('click',()=>openLb(i));
+  d.addEventListener('click',()=>openLb(catalog,idx));
   grid.appendChild(d);
   io.observe(d);
 }
+// posters gallery -> same lightbox
+const posterImgs=[...document.querySelectorAll('#posterGrid .poster img')].map(el=>el.getAttribute('src'));
+document.querySelectorAll('#posterGrid .poster').forEach((el,idx)=>{
+  el.addEventListener('click',()=>openLb(posterImgs,idx));
+});
 const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
-let cur=1;
-function openLb(i){cur=i;lbImg.src=`assets/img/catalog/page-${i}.jpg`;lb.classList.add('open');document.body.style.overflow='hidden'}
+let curList=catalog,curIdx=0;
+function openLb(list,i){curList=list;curIdx=i;lbImg.src=list[i];lb.classList.add('open');document.body.style.overflow='hidden'}
 function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
-function nav(d){cur=((cur-1+d+pages)%pages)+1;lbImg.src=`assets/img/catalog/page-${cur}.jpg`}
+function nav(d){curIdx=(curIdx+d+curList.length)%curList.length;lbImg.src=curList[curIdx]}
 document.getElementById('lbClose').onclick=closeLb;
 document.getElementById('lbNext').onclick=()=>nav(1);
 document.getElementById('lbPrev').onclick=()=>nav(-1);
